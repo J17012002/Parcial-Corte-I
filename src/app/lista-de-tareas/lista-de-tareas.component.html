@@ -1,0 +1,11 @@
+<div *ngIf="tareas.length === 0">No hay tareas en la lista.</div>
+<ul>
+  <li *ngFor="let tarea of tareas">
+    <h3>{{ tarea.title }}</h3>
+    <p>{{ tarea.description }}</p>
+    <label>
+      <input type="checkbox" [checked]="tarea.done" (change)="marcarComoCompletada(tarea)" />
+      {{ tarea.done ? 'Completada' : 'Pendiente' }}
+    </label>
+  </li>
+</ul>

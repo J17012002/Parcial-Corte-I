@@ -1,0 +1,26 @@
+<form #form="ngForm" (ngSubmit)="agregarTarea(form)">
+  <div>
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="title" required minlength="3">
+    <div *ngIf="form.controls['title']?.invalid && form.controls['title']?.touched">
+      El título debe tener al menos 3 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" [(ngModel)]="description" required minlength="10"></textarea>
+    <div *ngIf="form.controls['description']?.invalid && form.controls['description']?.touched">
+      La descripción debe tener al menos 10 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="done" name="done">
+      Completado
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Agregar Tarea</button>
+</form>
